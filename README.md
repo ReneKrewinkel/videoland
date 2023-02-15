@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+<img src='src/resources/images/videoland_logo.png' />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src='src/resources/images/videoland_preview.png' />
 
-## Available Scripts
+## Setup
 
-In the project directory, you can run:
+After clone.
 
-### `npm start`
+```shell
+cd videoland
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+npm install 
+# or
+yarn install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## JSON to SCSS
+Add JSON-to-SCSS preprocessor for design tokens
 
-### `npm test`
+### Install
+```shell
+npm install --global json-to-scss 
+````
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Run - after update token file!
+```shell
+json-to-scss src/resources/design/tokens.json src/resources/styles/tokens/_tokens.scss
+```
 
-### `npm run build`
+## .env
+Add a `.env.local` file in the **root** of your project based upon the `.env` file in this
+package. This will be containing **YOUR** firebase settings:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> Make sure your `.env` vars start with `REACT_APP_`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```dotenv
+REACT_APP_API_KEY=YOUR_KEY
+REACT_APP_AUTH_DOMAIN=YOUR_AUTH_DOMAIN
+REACT_APP_PROJECT_ID=YOUR_PROJECT_ID
+REACT_APP_STORAGE_BUCKET=YOUR_STORAGE_BUCKET
+REACT_APP_MESSAGING_SENDER_ID=YOUR_MESSAGING_SENDER_ID
+REACT_APP_APP_ID=YOUR_REACT_APP_APP_ID
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> **DON'T** commit your `.env.local` file to GitHub!
 
-### `npm run eject`
+## Storybook
+Storybook is set up and ready to go:
+```shell
+npm run storybook 
+# or 
+yarn storybook
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Firebase
+Execute `firebase init` after installation.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Chromatic
+Execute `npm install --save-dev chromatic` after installation.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Database Hook
+There is a  predefined hook called `useDatabase` in the
+`hooks` directory. This hook takes in the name of the collection
+to query:
 
-## Learn More
+```jsx
+import { useDatabase } from './hooks'
+...
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+const [data, isLoaded] = useDatabase('records')
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## FontAwesome
+The [FontAwesome icon library](https://fontawesome.com/v5/docs/web/use-with/react) is already installed
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Bootstrap
+[Bootstrap](https://react-bootstrap.github.io/getting-started/introduction) is already installed

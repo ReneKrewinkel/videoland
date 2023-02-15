@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import useDatabase from './hooks/useDatabase'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+  const [data, isLoaded] = useDatabase("series")
+
+  const renderList = () => {
+    return(
+        <ul>
+          {
+            data.map( (item, index) => {
+              return(
+                  <li key={ index }>{ `${item.data.seizoenen} van ${item.data.titel}` }</li>
+              )
+            })
+          }
+        </ul>
+    )
+  }
+
+  return(
+      <div>
+        <h1>Lijst</h1>
+        { isLoaded && renderList() }
+      </div>
+  )
+
+
 }
-
 export default App;
